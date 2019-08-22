@@ -8,7 +8,9 @@ jobs:
     steps:
      - run: |
         pwd
+        ls
         touch myFile.txt
+        ls
         echo "A test ok" > myFile.txt
         cat myFile.txt
 
