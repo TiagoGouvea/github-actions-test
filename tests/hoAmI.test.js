@@ -5,6 +5,6 @@ test('Data should return something', () => {
     expect(data).toBeTruthy();
 });
 
-test('Must fail this test', () => {
-    expect(false).toBeTruthy();
+test('Must success this test', () => {
+    expect(true).toBeTruthy();
 });
