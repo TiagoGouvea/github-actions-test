@@ -1,0 +1,12 @@
+name: Z file
+
+on: [push]
+
+jobs:
+  test:
+    name: Z test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      run: echo "Z test ok"

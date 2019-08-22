@@ -33,16 +33,29 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build --if-present
+
+  deploy:
+    name: Deploy to Heroku
+    needs: build
+
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 10.x
       - name: npm install and build
         run: |
           npm install
