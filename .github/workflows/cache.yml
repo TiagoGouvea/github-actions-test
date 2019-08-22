@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   writeHere:
+    runs-on: ubuntu-latest
     steps:
      - run: |
         pwd
@@ -12,6 +13,7 @@ jobs:
         cat myFile.txt
 
   write:
+    runs-on: ubuntu-latest
     steps:
      - run: |
         pwd
@@ -19,6 +21,6 @@ jobs:
         echo "A test ok" > /github/workspace/myFile.txt
 
   read:
-    name: Write the file
+    runs-on: ubuntu-latest
     steps:
      - run: cat /github/workspace/myFile.txt
