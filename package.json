@@ -1,0 +1,27 @@
+{
+  "name": "github-actions-test",
+  "version": "1.0.0",
+  "description": "A simple repo to try Github Actions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiagoGouvea/github-actions-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TiagoGouvea/github-actions-test/issues"
+  },
+  "homepage": "https://github.com/TiagoGouvea/github-actions-test#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "jest": "^24.9.0"
+  }
+}
