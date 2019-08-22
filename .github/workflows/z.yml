@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      run: echo "Z test ok"
+    - run: echo "Z test ok"
