@@ -4,26 +4,21 @@ on: [push]
 
 jobs:
   writeHere:
-    name: Write to a file on a path
-    runs-on: ubuntu-latest
     steps:
-      run: |
+     - run: |
         pwd
         touch myFile.txt
         echo "A test ok" > myFile.txt
         cat myFile.txt
 
   write:
-    name: Write to a file on a path
-    runs-on: ubuntu-latest
     steps:
-      run: |
+     - run: |
         pwd
         touch /github/workspace/myFile.txt
         echo "A test ok" > /github/workspace/myFile.txt
 
   read:
     name: Write the file
-    runs-on: ubuntu-latest
     steps:
-      run: cat /github/workspace/myFile.txt
+     - run: cat /github/workspace/myFile.txt
