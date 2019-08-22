@@ -1,0 +1,16 @@
+name: Cache workflow test
+
+on: [push]
+
+jobs:
+  write:
+    name: Write to a file
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "A test ok" > /github/workspace/myFile.txt
+
+  read:
+    name: Write the file
+    runs-on: ubuntu-latest
+    steps:
+      - run: cat /github/workspace/myFile.txt
