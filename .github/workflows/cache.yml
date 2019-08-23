@@ -4,14 +4,11 @@ on: [push]
 
 jobs:
   writeAndCheckOnPath:
-    runs-on: ubuntu-latest
     container:
       image: node:10.16-jessie
       volumes:
         - my_volume:/volume_mount
     steps:
-     - name: write and check
-       uses: ./.github/actions/cache
      - run: |
         pwd
         ls $path/ -la
@@ -23,15 +20,12 @@ jobs:
          path: "my_volume"
 
   readOnPath:
-    runs-on: ubuntu-latest
     container:
       image: node:10.16-jessie
       volumes:
         - my_volume:/volume_mount
     needs: writeAndCheckOnPath
     steps:
-     - name: read files
-       uses: ./.github/actions/cache
      - run: |
         pwd
         ls $path/ -la
