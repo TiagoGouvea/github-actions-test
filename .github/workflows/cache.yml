@@ -18,7 +18,7 @@ jobs:
         echo "Hello World!" > $path/myFile.txt
         cat $path/myFile.txt
        env:
-         path: "my_volume"
+         path: "/my_volume"
 
   readOnPath:
     runs-on: ubuntu-latest
@@ -33,4 +33,4 @@ jobs:
         ls $path/ -la
         cat $path/myFile.txt
        env:
-         path: "my_volume"
+         path: "/my_volume"
