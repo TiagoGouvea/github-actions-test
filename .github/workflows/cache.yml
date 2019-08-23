@@ -3,27 +3,22 @@ name: Cache workflow test
 on: [push]
 
 jobs:
-  writeHere:
+  writeAndChek:
     runs-on: ubuntu-latest
     steps:
      - run: |
         pwd
         ls
+        mkdir tiago-gouvea-folder
         touch myFile.txt
         ls
         echo "A test ok" > myFile.txt
         cat myFile.txt
-        mkdir tiago
-        ls
 
-  write:
+  read:
     runs-on: ubuntu-latest
     steps:
      - run: |
         pwd
         ls
-
-  read:
-    runs-on: ubuntu-latest
-    steps:
-     - run: cat /github/workspace/myFile.txt
+        cat myFile.txt
