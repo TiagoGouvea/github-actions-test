@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo A message
+          echo "A message"
           npm install
-          echo Another message or command
+          echo "Another message or command"
           python myscript.py
           ./some-shell-script-file.sh
           bash some-shell-script-file.sh -x
