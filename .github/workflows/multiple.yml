@@ -1,0 +1,16 @@
+name: My Workflow with multiple commands
+
+on: [push]
+
+jobs:
+  runMultipleCommands:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A message
+          npm install
+          echo Another message or command
+          python myscript.py
+          ./some-shell-script-file.sh
+          bash some-shell-script-file.sh -x
+      - run: echo One last message
