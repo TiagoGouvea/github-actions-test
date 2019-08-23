@@ -8,10 +8,10 @@ jobs:
     steps:
      - run: |
         pwd
-        ls
+        ls -la
         mkdir tiago-gouvea-folder
         touch myFile.txt
-        ls
+        ls -la
         echo "A test ok" > myFile.txt
         cat myFile.txt
 
@@ -20,5 +20,5 @@ jobs:
     steps:
      - run: |
         pwd
-        ls
+        ls -la
         cat myFile.txt
