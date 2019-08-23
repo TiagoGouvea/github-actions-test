@@ -14,14 +14,15 @@ jobs:
         echo "Hello World!" > $path/myFile.txt
         cat $path/myFile.txt
        env:
-         path: "/github/home"
+         path: "."
 
   readOnPath:
     runs-on: ubuntu-latest
+    needs: writeAndCheckOnPath
     steps:
      - run: |
         pwd
         ls $path/ -la
         cat $path/myFile.txt
        env:
-         path: "/github/home"
+         path: "."
