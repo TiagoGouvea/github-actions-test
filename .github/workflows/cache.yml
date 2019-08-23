@@ -8,7 +8,7 @@ jobs:
       steps:
       - run: |
         printenv
-        echo ...
+        echo '...'
         echo GITHUB_HOME: $GITHUB_HOME
         echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE
 
