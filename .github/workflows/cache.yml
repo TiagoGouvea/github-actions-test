@@ -3,31 +3,25 @@ name: Cache workflow test
 on: [push]
 
 jobs:
-  getEnvs:
+  writeAndCheckOnPath:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        printenv
+     - run: |
+        pwd
+        ls $path/ -la
+        touch $path/myFile.txt
+        ls $path/ -la
+        echo "Hello World!" > $path/myFile.txt
+        cat $path/myFile.txt
+       env:
+         path: "."
 
-#  writeAndChek:
-#    runs-on: ubuntu-latest
-#    steps:
-#     - run: |
-#        pwd
-#        ls $path/ -la
-#        touch $path/myFile.txt
-#        ls $path/ -la
-#        echo "A test ok" > $path/myFile.txt
-#        cat $path/myFile.txt
-#       env:
-#         path: "."
-#
-#  read:
-#    runs-on: ubuntu-latest
-#    steps:
-#     - run: |
-#        pwd
-#        ls $path/ -la
-#        cat $path/myFile.txt
-#       env:
-#         path: "."
+  readOnPath:
+    runs-on: ubuntu-latest
+    steps:
+     - run: |
+        pwd
+        ls $path/ -la
+        cat $path/myFile.txt
+       env:
+         path: "."

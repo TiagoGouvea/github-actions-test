@@ -1,0 +1,10 @@
+name: List All Environment Variables workflow test
+
+on: [push]
+
+jobs:
+  getEnvs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        printenv
