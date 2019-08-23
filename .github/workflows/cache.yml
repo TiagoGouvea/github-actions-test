@@ -3,16 +3,25 @@ name: Cache workflow test
 on: [push]
 
 jobs:
+  getEnvs:
+    runs-on: ubuntu-latest
+      steps:
+      - run: |
+        printenv
+        echo -------
+        echo GITHUB_HOME: $GITHUB_HOME
+        echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE
+
   writeAndChek:
     runs-on: ubuntu-latest
     steps:
      - run: |
         pwd
-        ls {$path}/ -la
-        touch {$path}/myFile.txt
-        ls {$path}/ -la
-        echo "A test ok" > {$path}/myFile.txt
-        cat {$path}/myFile.txt
+        ls $path/ -la
+        touch $path/myFile.txt
+        ls $path/ -la
+        echo "A test ok" > $path/myFile.txt
+        cat $path/myFile.txt
        env:
          path: "."
 
@@ -21,7 +30,7 @@ jobs:
     steps:
      - run: |
         pwd
-        ls {$path}/ -la
-        cat {$path}/myFile.txt
+        ls $path/ -la
+        cat $path/myFile.txt
        env:
          path: "."
