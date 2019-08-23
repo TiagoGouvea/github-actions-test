@@ -6,7 +6,6 @@ jobs:
   runMultipleCommands:
     runs-on: ubuntu-latest
     steps:
-      - name: Run many commands
       - uses: actions/checkout@v1
       - run: |
           echo "A message"
