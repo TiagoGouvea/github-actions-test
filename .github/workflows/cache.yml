@@ -5,6 +5,10 @@ on: [push]
 jobs:
   writeAndCheckOnPath:
     runs-on: ubuntu-latest
+    container:
+      image: node:10.16-jessie
+      volumes:
+        - my_volume:/volume_mount
     steps:
      - name: write and check
        uses: ./.github/actions/cache
@@ -16,10 +20,14 @@ jobs:
         echo "Hello World!" > $path/myFile.txt
         cat $path/myFile.txt
        env:
-         path: "."
+         path: "my_volume"
 
   readOnPath:
     runs-on: ubuntu-latest
+    container:
+      image: node:10.16-jessie
+      volumes:
+        - my_volume:/volume_mount
     needs: writeAndCheckOnPath
     steps:
      - name: read files
@@ -29,4 +37,4 @@ jobs:
         ls $path/ -la
         cat $path/myFile.txt
        env:
-         path: "."
+         path: "my_volume"
