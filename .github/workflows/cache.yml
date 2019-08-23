@@ -5,12 +5,12 @@ on: [push]
 jobs:
   getEnvs:
     runs-on: ubuntu-latest
-      steps:
-      - run: |
-        printenv
-        echo '...'
-        echo GITHUB_HOME: $GITHUB_HOME
-        echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE
+    steps:
+    - run: |
+      printenv
+      echo '...'
+      echo GITHUB_HOME: $GITHUB_HOME
+      echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE
 
   writeAndChek:
     runs-on: ubuntu-latest
