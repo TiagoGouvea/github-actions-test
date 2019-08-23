@@ -11,6 +11,6 @@ jobs:
           echo "A message"
           npm install
           echo "Another message or command"
-#          ./some-shell-script-file.sh
           bash some-shell-script-file.sh -x
+          ./some-shell-script-file.sh
       - run: echo One last message
