@@ -6,7 +6,9 @@ jobs:
   writeAndCheckOnPath:
     runs-on: ubuntu-latest
     steps:
-     - run: |
+     - name: write and check
+       uses: ./.github/actions/cache
+       run: |
         pwd
         ls $path/ -la
         touch $path/myFile.txt
@@ -20,7 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: writeAndCheckOnPath
     steps:
-     - run: |
+     - name: read files
+       uses: ./.github/actions/cache
+       run: |
         pwd
         ls $path/ -la
         cat $path/myFile.txt
