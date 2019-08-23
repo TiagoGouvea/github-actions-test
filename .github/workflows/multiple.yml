@@ -6,11 +6,11 @@ jobs:
   runMultipleCommands:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - run: |
           echo "A message"
           npm install
           echo "Another message or command"
-          python myscript.py
           ./some-shell-script-file.sh
           bash some-shell-script-file.sh -x
       - run: echo One last message
