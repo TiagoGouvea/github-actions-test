@@ -8,17 +8,20 @@ jobs:
     steps:
      - run: |
         pwd
-        ls -la
-        mkdir tiago-gouvea-folder
-        touch myFile.txt
-        ls -la
-        echo "A test ok" > myFile.txt
-        cat myFile.txt
+        ls {$path}/ -la
+        touch {$path}/myFile.txt
+        ls {$path}/ -la
+        echo "A test ok" > {$path}/myFile.txt
+        cat {$path}/myFile.txt
+       env:
+         path: "/"
 
   read:
     runs-on: ubuntu-latest
     steps:
      - run: |
         pwd
-        ls -la
-        cat myFile.txt
+        ls {$path}/ -la
+        cat {$path}/myFile.txt
+       env:
+         path: "/"
