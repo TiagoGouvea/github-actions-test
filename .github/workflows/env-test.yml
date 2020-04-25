@@ -1,16 +1,18 @@
-name: x-pull-request
+name: Env tests
 on: pull_request
+
 env:
   FOO_ROOT: bar on root
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      FOO_JOB: bar on job
     steps:
       - uses: actions/checkout@v1
       - name: Test envs
         run: ./env-test.sh
         env:
           FOO_STEP: bar on step
-    env:
-      FOO_JOB: bar on job
+
