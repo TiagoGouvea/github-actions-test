@@ -4,8 +4,6 @@ env:
   FOO_ROOT: bar on root
 
 jobs:
-  env:
-    FOO_JOB: bar on job
   test:
     runs-on: ubuntu-latest
     steps:
@@ -14,3 +12,5 @@ jobs:
         run: ./env-test.sh
         env:
           FOO_STEP: bar on step
+    env:
+      FOO_JOB: bar on job
