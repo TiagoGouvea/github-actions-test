@@ -1,5 +1,5 @@
 name: Env tests
-on: pull_request
+on: push
 
 env:
   FOO_ROOT: bar on root
