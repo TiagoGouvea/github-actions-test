@@ -31,6 +31,11 @@ jobs:
 
       - name: Get Vars
         run: |
-          echo ${{ steps.vars.output.branch }}
-          echo ${{ steps.vars.output.sha_short }}
-          echo "Sha: ${{ steps.vars.output.sha_short }}"
+          echo ${{ steps.vars.outputs.branch }}
+          echo ${{ steps.vars.outputs.sha_short }}
+          echo "Sha: ${{ steps.vars.outputs.sha_short }}"
+
+      - name: Dump steps context
+        env:
+          STEPS-JSON: ${{ toJson(steps) }}
+        run: echo "STEPS-JSON"
