@@ -10,24 +10,34 @@ jobs:
       - run: |
           printenv
 
+      - name: Call printenv to see all envs
+        shell: bash
+        run: printenv
+
+      - name: Call printenv filtering see GitHub envs
+        shell: bash
+        run:  grep "^GITHUB.*"
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: Call printenv to see all envs
+      - name: Shell GIT env
         shell: bash
-        run: printenv
+        run: |
+          echo "github.event.pull_request.head.sha = ${{ github.event.pull_request.head.sha }}"
+          echo "GITHUB_SHA = ${GITHUB_SHA}"
+          echo " = ${GITHUB_REF#refs/heads/}"
 
       - name: Extract branch name
         id: vars
         shell: bash
         run: |
           echo "GITHUB_SHA: ${GITHUB_SHA}"
-          echo $(git rev-parse --short HEAD)
           echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-          echo ${{ github.event.pull_request.head.sha }}
+
 
       - name: Get Vars
         run: |
