@@ -25,6 +25,6 @@ jobs:
         echo ${{ github.event.pull_request.head.sha }}
 
     - name: Get Vars
-        run: |
-          echo ${{ steps.vars.output.sha_short }}
-          echo "Sha: ${{ steps.vars.output.sha_short }}"
+      run: |
+        echo ${{ steps.vars.output.sha_short }}
+        echo "Sha: ${{ steps.vars.output.sha_short }}"
