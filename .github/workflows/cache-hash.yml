@@ -11,11 +11,18 @@ jobs:
         uses: actions/cache@v1
         with:
           path: tests
-          key: ${{ runner.os }}-${{ hashFiles('**') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/*') }}
 
       - name: Check cached test folder
         id: cache-tests
         uses: actions/cache@v1
         with:
           path: tests
-          key: ${{ runner.os }}-${{ hashFiles('tests/**') }}
+          key: ${{ runner.os }}-${{ hashFiles('tests/**/*') }}
+
+      - name: Check cached workflow file
+        id: cache-this-file
+        uses: actions/cache@v1
+        with:
+          path: tests
+          key: ${{ runner.os }}-${{ hashFiles('.github/workflows/cache-hash.yml') }}
