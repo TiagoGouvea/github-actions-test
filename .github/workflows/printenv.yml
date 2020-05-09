@@ -26,7 +26,8 @@ jobs:
       - name: Shell GIT env
         shell: bash
         run: |
-          echo "github.event.pull_request.head.sha = ${github.event.pull_request.head.sha}"
+          SHA=${{ github.event.pull_request.head.sha }}
+          echo "github.event.pull_request.head.sha = ${SHA}"
           echo "GITHUB_SHA = ${GITHUB_SHA}"
           echo "GITHUB_REF = ${GITHUB_REF}"
           echo "BRANCH = ${GITHUB_REF#refs/heads/}"
