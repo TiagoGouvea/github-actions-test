@@ -51,6 +51,8 @@ jobs:
           STEPS-JSON: ${{ toJson(steps.vars) }}
           STEPS-JSON2: ${{ toJson(steps.vars.outputs) }}
         run: |
-          echo STEPS-
-          echo STEPS-JSON
-          echo STEPS-JSON2
+          echo "${STEPS-}"
+          echo "$STEPS-"
+          echo "${STEPS-JSON}"
+          echo "$STEPS-JSON"
+          echo "${STEPS-JSON2}"
