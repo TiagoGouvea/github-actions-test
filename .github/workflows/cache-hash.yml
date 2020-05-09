@@ -1,0 +1,21 @@
+name: Cache workflow test
+
+on: [push]
+
+jobs:
+  cache-hash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check cached all files
+        id: cache-node-modules
+        uses: actions/cache@v1
+        with:
+          path: tests
+          key: ${{ runner.os }}-${{ hashFiles('**') }}
+
+      - name: Check cached test folder
+        id: cache-node-modules
+        uses: actions/cache@v1
+        with:
+          path: tests
+          key: ${{ runner.os }}-${{ hashFiles('tests/**') }}
