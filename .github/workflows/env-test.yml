@@ -15,4 +15,3 @@ jobs:
         run: ./env-test.sh
         env:
           FOO_STEP: bar on step
-
