@@ -6,30 +6,31 @@ jobs:
   getEnvs:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        printenv
+      - uses: actions/checkout@v1
+      - run: |
+          printenv
 
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
-    - name: Call printenv to see all envs
-      shell: bash
-      run: printenv
+      - name: Call printenv to see all envs
+        shell: bash
+        run: printenv
 
-    - name: Extract branch name
-      id: vars
-      shell: bash
-      run: |
-        echo "GITHUB_SHA: ${GITHUB_SHA}"
-        echo $(git rev-parse --short HEAD)
-        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-        echo ${{ github.event.pull_request.head.sha }}
+      - name: Extract branch name
+        id: vars
+        shell: bash
+        run: |
+          echo "GITHUB_SHA: ${GITHUB_SHA}"
+          echo $(git rev-parse --short HEAD)
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          echo ${{ github.event.pull_request.head.sha }}
 
-    - name: Get Vars
-      run: |
-        echo ${{ steps.vars.output.branch }}
-        echo ${{ steps.vars.output.sha_short }}
-        echo "Sha: ${{ steps.vars.output.sha_short }}"
+      - name: Get Vars
+        run: |
+          echo ${{ steps.vars.output.branch }}
+          echo ${{ steps.vars.output.sha_short }}
+          echo "Sha: ${{ steps.vars.output.sha_short }}"
