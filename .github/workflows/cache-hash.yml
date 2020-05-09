@@ -6,6 +6,7 @@ jobs:
   cache-hash:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Check cached all files
         id: cache-all
         uses: actions/cache@v1
