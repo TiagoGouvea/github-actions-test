@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check cached all files
-        id: cache-node-modules
+        id: cache-all
         uses: actions/cache@v1
         with:
           path: tests
           key: ${{ runner.os }}-${{ hashFiles('**') }}
 
       - name: Check cached test folder
-        id: cache-node-modules
+        id: cache-tests
         uses: actions/cache@v1
         with:
           path: tests
