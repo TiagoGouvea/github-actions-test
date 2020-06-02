@@ -33,7 +33,14 @@ jobs:
         with:
           path: .env
         
-      - name: Check .env file
+      - name: ls on root folder
         run: |
           ls
+
+      - name: ls on .env/ folder
+        run: |
           ls .env/
+
+      - name: Cat .env/artifact file
+        run: |
+          cat .env/artifact
