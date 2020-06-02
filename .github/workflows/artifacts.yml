@@ -35,12 +35,12 @@ jobs:
         
       - name: ls on root folder
         run: |
-          ls
+          ls -la
 
       - name: ls on .env/ folder
         run: |
-          ls .env/
+          ls -la .env/
 
       - name: ls on .env/artifact folder
         run: |
-          ls .env/artifact/
+          ls -la .env/artifact/
