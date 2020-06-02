@@ -1,0 +1,38 @@
+name: Artifacts tests
+on: push
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Create .env file
+        run: |
+          echo "my file content" > .env
+          cat .env
+
+      - name: Check .env file
+        run: |
+          cat .env
+
+      - name: Store .env artifcat
+        uses: actions/upload-artifact@v2
+        with:
+          path: .env
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Get artifact
+        uses: actions/download-artifact@v2
+        with:
+          path: .env
+        
+      - name: Check .env file
+        run: |
+          cat .env
