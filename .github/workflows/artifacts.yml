@@ -44,3 +44,7 @@ jobs:
       - name: ls on .env/artifact folder
         run: |
           ls -la .env/artifact/
+
+      - name: cat  .env/artifact/.env file
+        run: |
+          ls -la .env/artifact/.env 
