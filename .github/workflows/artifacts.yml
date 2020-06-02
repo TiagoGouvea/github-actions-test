@@ -20,6 +20,7 @@ jobs:
       - name: Store .env artifcat
         uses: actions/upload-artifact@v2
         with:
+          name: envFile
           path: .env
 
   deploy:
@@ -31,6 +32,7 @@ jobs:
       - name: Get artifact
         uses: actions/download-artifact@v2
         with:
+          name: envFile
           path: .env
         
       - name: ls on root folder
@@ -47,4 +49,4 @@ jobs:
 
       - name: cat  .env/artifact/.env file
         run: |
-          ls -la .env/artifact/.env 
+          ls -la .env/artifact/.env
