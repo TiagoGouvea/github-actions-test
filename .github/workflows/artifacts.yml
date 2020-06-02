@@ -45,4 +45,4 @@ jobs:
 
       - name: cat  .env/.env file
         run: |
-          cat -la .env/.env
+          cat .env/.env
