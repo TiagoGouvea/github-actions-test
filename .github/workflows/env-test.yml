@@ -15,7 +15,7 @@ jobs:
         run: ./env-test.sh
         env:
           FOO_STEP: bar on step
-          
+
   set-vars:
     runs-on: ubuntu-latest
     outputs:
@@ -29,7 +29,9 @@ jobs:
           echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           declare -A branchToEnv
           branchToEnv[master]="production"
-          environment=branchToEnv[${branch}] || ${branch}
+          echo "val: ${branchToEnv[${branch}]}"
+          environment=${branchToEnv[${branch}]} || ${branch}
+          echo "environment: ${environment}"
           echo "::set-output name=enviroment::${environment}"
 
   read-vars:
