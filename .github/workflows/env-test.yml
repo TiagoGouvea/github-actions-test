@@ -17,7 +17,6 @@ jobs:
           FOO_STEP: bar on step
 
   set-vars:
-    runs-on: ubuntu-latest
     outputs:
       enviroment: ${{ steps.environment.outputs.enviroment }}
       branch: ${{ steps.environment.outputs.branch }}
@@ -37,7 +36,6 @@ jobs:
           echo "::set-output name=enviroment::${enviroment}"
 
   read-vars:
-     runs-on: ubuntu-latest
      needs: set-vars
      steps:
      - run: echo ${{needs.set-vars.outputs.branch}} - ${{needs.set-vars.outputs.enviroment}}
