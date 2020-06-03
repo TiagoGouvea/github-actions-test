@@ -35,6 +35,10 @@ jobs:
           echo "environment: ${enviroment}"
           echo "::set-output name=branch::${branch}"
           echo "::set-output name=enviroment::${enviroment}"
+          secret="secrets.${enviroment^^}"
+          echo "secret: ${secret}"
+          echo "1: ${{ secrets.MASTER }}"
+          echo "2: ${{ ${secret} }}"
 
   read-vars:
      runs-on: ubuntu-latest
