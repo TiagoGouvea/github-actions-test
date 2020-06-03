@@ -38,7 +38,7 @@ jobs:
           secret="secrets.${enviroment^^}"
           echo "secret: ${secret}"
           echo "1: ${{ secrets.MASTER }}"
-          echo "2: ${{ ${secret} }}"
+          echo "2: ${{ secrets[$secret] }}"
 
   read-vars:
      runs-on: ubuntu-latest
