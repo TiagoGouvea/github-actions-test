@@ -5,7 +5,7 @@ env:
   FOO_ROOT: bar on root
 
 jobs:
-  test:
+  acces-root-env:
     runs-on: ubuntu-latest
     env:
       FOO_JOB: bar on job
@@ -19,7 +19,7 @@ jobs:
   set-vars:
     runs-on: ubuntu-latest
     outputs:
-      enviroment: ${{ steps.environment.outputs.environment }}
+      enviroment: ${{ steps.environment.outputs.enviroment }}
       branch: ${{ steps.environment.outputs.branch }}
     steps:
       - name: Set enviroment
@@ -31,7 +31,7 @@ jobs:
           declare -A branchToEnv
           branchToEnv[master]="production"
           echo "val: ${branchToEnv[${branch}]}"
-          enviroment=${branchToEnv[${branch}]} || ${branch}
+          enviroment=${branchToEnv[${branch}]:=branch}
           echo "environment: ${enviroment}"
           echo "::set-output name=branch::${branch}"
           echo "::set-output name=enviroment::${enviroment}"
