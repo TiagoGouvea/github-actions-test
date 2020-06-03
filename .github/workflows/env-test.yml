@@ -26,12 +26,14 @@ jobs:
         id: environment
         shell: bash
         run: |
-          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          branch=${GITHUB_REF#refs/heads/}
+          echo "branch: ${branch}"
           declare -A branchToEnv
           branchToEnv[master]="production"
           echo "val: ${branchToEnv[${branch}]}"
           environment=${branchToEnv[${branch}]} || ${branch}
           echo "environment: ${environment}"
+          echo "::set-output name=branch::${branch}"
           echo "::set-output name=enviroment::${environment}"
 
   read-vars:
