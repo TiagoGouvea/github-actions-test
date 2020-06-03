@@ -31,10 +31,10 @@ jobs:
           declare -A branchToEnv
           branchToEnv[master]="production"
           echo "val: ${branchToEnv[${branch}]}"
-          environment=${branchToEnv[${branch}]} || ${branch}
-          echo "environment: ${environment}"
+          enviroment=${branchToEnv[${branch}]} || ${branch}
+          echo "environment: ${enviroment}"
           echo "::set-output name=branch::${branch}"
-          echo "::set-output name=enviroment::${environment}"
+          echo "::set-output name=enviroment::${enviroment}"
 
   read-vars:
      runs-on: ubuntu-latest
