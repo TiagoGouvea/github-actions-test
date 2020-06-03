@@ -1,0 +1,32 @@
+name: Env tests
+on: push
+
+env:
+  FOO_ROOT: bar on root
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      FOO_JOB: bar on job
+    steps:
+      - uses: actions/checkout@v1
+      - name: Test envs
+        run: ./env-test.sh
+        env:
+          FOO_STEP: bar on step
+  vars:
+    runs-on: ubuntu-latest
+    outputs:
+      enviroment: ${{ steps.environment.outputs.environment }}
+      output2: ${{ steps.step2.outputs.test }}
+    steps:
+      - name: Set enviroment
+        id: environment
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          declare -A branchToEnv
+          branchToEnv[master]="production"
+          environment=branchToEnv[${branch}] || ${branch}
+          echo "::set-output name=enviroment::${environment}"
