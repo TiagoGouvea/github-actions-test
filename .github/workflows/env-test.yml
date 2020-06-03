@@ -31,7 +31,7 @@ jobs:
           declare -A branchToEnv
           branchToEnv[master2]="production"
           echo "val: ${branchToEnv[${branch}]}"
-          enviroment=${branchToEnv[${branch}]:=branch}
+          enviroment=${branchToEnv[${branch}]:-branch}
           echo "environment: ${enviroment}"
           echo "::set-output name=branch::${branch}"
           echo "::set-output name=enviroment::${enviroment}"
