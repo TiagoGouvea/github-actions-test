@@ -34,7 +34,7 @@ jobs:
           enviroment=${branchToEnv[${branch}]:-$branch}
           echo "::set-output name=enviroment::${enviroment}"
           echo "environment: ${enviroment}"
-          echo "::set-output name=secret_name::${enviroment^^}"
+          echo "::set-output name=secret_name::${branch^^}"
       - name: Read Secret
         id: read_secret
         shell: bash
