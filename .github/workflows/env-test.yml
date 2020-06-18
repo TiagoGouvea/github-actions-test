@@ -27,18 +27,24 @@ jobs:
         shell: bash
         run: |
           branch=${GITHUB_REF#refs/heads/}
+          echo "::set-output name=branch::${branch}"
           echo "branch: ${branch}"
           declare -A branchToEnv
           branchToEnv[master2]="production"
           echo "val: ${branchToEnv[${branch}]}"
           enviroment=${branchToEnv[${branch}]:=$branch}
-          echo "environment: ${enviroment}"
-          echo "::set-output name=branch::${branch}"
           echo "::set-output name=enviroment::${enviroment}"
-          secret="secrets.${enviroment^^}"
-          echo "secret: ${secret}"
-          echo "1: ${{ secrets.MASTER }}"
-          echo "2: ${{ secrets[$secret] }}"
+          echo "environment: ${enviroment}"
+          echo "::set-output name=secret_name::${enviroment^^}"
+      - name: Read Secret
+        id: read_secret
+        shell: bash
+        env:
+          SECRET_NAME: ${{ steps.enviroment.output.secret_name }}
+          SECRET: ${{ secrets[steps.enviroment.output.secret_name] }}
+        run: |
+          echo "SECRET_NAME: ${SECRET_NAME}"
+          echo "SECRET: ${SECRET}"
 
   read-vars:
      runs-on: ubuntu-latest
