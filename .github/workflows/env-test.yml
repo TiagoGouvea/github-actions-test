@@ -35,6 +35,7 @@ jobs:
           echo "::set-output name=enviroment::${enviroment}"
           echo "environment: ${enviroment}"
           echo "::set-output name=secret_name::${branch^^}"
+          echo "secret: ${{ secrets[MASTER] }}"
       - name: Read Secret
         id: read_secret
         shell: bash
