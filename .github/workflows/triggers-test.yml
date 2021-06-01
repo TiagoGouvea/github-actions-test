@@ -1,0 +1,24 @@
+name: Env tests
+on:
+  push:
+  pull_request:
+
+# Note: By default, a workflow only runs when a pull_request's activity
+# type is: >> opened, synchronize, or reopened. <<
+# To trigger workflows for more activity types, use the types keyword.
+
+jobs:
+  show-events:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show events
+        run: |
+          echo "github.ref: ${{ github.ref }}"
+          echo "github.base_ref: ${{ github.base_ref }}"
+          echo "github.head_ref: ${{ github.head_ref }}"
+          echo "github.action: ${{ github.action }}"
+          echo "github.action_path: ${{ github.action_path }}"
+          echo "github.event_name: ${{ github.event_name }}"
+          echo "github.event_path: ${{ github.event_path }}"
+          echo "github.event.action: ${{ github.event.action }}"
+          echo "github.event.pull_request.merged: ${{ github.event.pull_request.merged }}"

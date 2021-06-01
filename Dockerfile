@@ -8,4 +8,3 @@ RUN apk add git > ./output.log
 FROM alpine:latest
 COPY --from=builder ./output.log .
 RUN cat output.log
-CMD []
