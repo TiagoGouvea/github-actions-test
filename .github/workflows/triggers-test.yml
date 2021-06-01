@@ -1,4 +1,4 @@
-name: Env tests
+name: Triggers test
 on:
   push:
   pull_request:
