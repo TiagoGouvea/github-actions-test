@@ -15,7 +15,7 @@ jobs:
           wget https://app-deployment.meetbreakout.com/dependences/dependences.zip
 
       - name: List files
-        run: ls
+        run: ls -la
 
       - name: Unzip file
         run: unzip dependences.zip

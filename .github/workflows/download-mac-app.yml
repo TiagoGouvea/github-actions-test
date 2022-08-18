@@ -7,9 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Download zip file
+      - name: Download .app file
         run: |
-          wget --recursive https://app-deployment.meetbreakout.com/dependences/OBS.app
+          wget --recursive --no-parent https://app-deployment.meetbreakout.com/dependences/OBS.app
 
       - name: List files
         run: ls -la
