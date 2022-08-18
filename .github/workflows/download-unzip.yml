@@ -1,7 +1,6 @@
 name: Download and unzip
 on: push
 
-
 jobs:
   download_unzip:
     runs-on: ubuntu-latest
