@@ -19,13 +19,28 @@ on:
 #github.event.action: opened
 #github.event.pull_request.merged: false
 
-## 3 When merged: > "On Push" happened
+## 3 When merged: > "On Push" happened - No "on: pull_request" happened!
 #github.ref: refs/heads/master
 #github.action: run
 #github.event_name: push
 #github.event_path: /home/runner/work/_temp/_github_workflow/event.json
 #github.event.action:
 #github.event.pull_request.merged:
+
+## Added types:   [opened, reopened, synchronize, closed]
+## Created a new PR
+
+## 4 When merged: > "On Push" happened - When merged "on: pull_request" happened
+#github.ref: master
+#github.ref: master
+#github.base_ref: master
+#github.head_ref: dev
+#github.action: run
+#github.action_path:
+#github.event_name: pull_request
+#github.event_path: /home/runner/work/_temp/_github_workflow/event.json
+#github.event.action: closed
+#github.event.pull_request.merged: true
 
 jobs:
   show-events:

@@ -1,0 +1,18 @@
+name: Mac .app file download test
+on: push
+
+jobs:
+  download_unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Download zip file
+        run: |
+          wget https://app-deployment.meetbreakout.com/dependences/OBS.app
+
+      - name: List files
+        run: ls -la
+
+      - name: List files on app
+        run: cd OBS.app && ls -la

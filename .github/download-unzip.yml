@@ -1,0 +1,26 @@
+name: Download and unzip
+on: push
+
+
+jobs:
+  download_unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: List files
+        run: ls
+
+      - name: Download zip file
+        run: |
+          wget https://app-deployment.meetbreakout.com/dependences/dependences.zip
+
+      - name: List files
+        run: ls
+
+      - name: Unzip file
+        run: unzip dependences.zip
+
+      - name: List files
+        run: ls
+
