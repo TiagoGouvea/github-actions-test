@@ -9,7 +9,7 @@ jobs:
 
       - name: Download zip file
         run: |
-          wget https://app-deployment.meetbreakout.com/dependences/OBS.app
+          wget --recursive https://app-deployment.meetbreakout.com/dependences/OBS.app
 
       - name: List files
         run: ls -la
