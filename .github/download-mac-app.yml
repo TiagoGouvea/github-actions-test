@@ -2,14 +2,14 @@ name: Mac .app file download test
 on: push
 
 jobs:
-  download_unzip:
+  download_mac_app:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
 
       - name: Download .app file
         run: |
-          wget --recursive --no-parent https://app-deployment.meetbreakout.com/dependences/OBS.app
+          wget --recursive --cut-dirs=2 --no-host-directories https://app-deployment.meetbreakout.com/dependences/OBS.app
 
       - name: List files
         run: ls -la

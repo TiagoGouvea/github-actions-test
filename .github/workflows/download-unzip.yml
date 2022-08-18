@@ -12,7 +12,7 @@ jobs:
 
       - name: Download zip file
         run: |
-          wget https://app-deployment.meetbreakout.com/dependences/dependences.zip
+          wget --no-host-directories https://app-deployment.meetbreakout.com/dependences/dependences.zip
 
       - name: List files
         run: ls -la
