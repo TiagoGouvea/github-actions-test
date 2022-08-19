@@ -16,6 +16,7 @@ jobs:
           START_TEXT: "${{ env.START_NOW && 'Start now!' || 'Start latter' }}"
           NULL_VARIABLE: "${{ env.DONT_EXISTS && 'It exists!' || 'Dont exists!' }}"
           NOT_NULL_VARIABLE: "${{ env.FOO_ROOT && 'It exists!' || 'Dont exists!' }}"
+          CONDITIONAL_AND_CONCAT: "${{ env.FOO_ROOT && 'It exists and the value is: ${env.FOO_ROOT} !' || 'Dont exists!' }}"
         run: |
           echo "START ${START}"
           echo "START_TEXT ${START_TEXT}"
