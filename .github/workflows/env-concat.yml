@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Conditional env
-        if: ${{ env.START_NOW == true }}
+        if: ${{ env.START_NOW }}
         env:
           START: "Now!"
           START_TEXT: "${{ env.START_NOW == true && 'Start now!' || 'Start latter' }}"
