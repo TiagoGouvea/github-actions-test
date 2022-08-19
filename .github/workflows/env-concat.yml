@@ -22,3 +22,4 @@ jobs:
           echo "START_TEXT ${START_TEXT}"
           echo "NULL_VARIABLE ${NULL_VARIABLE}"
           echo "NOT_NULL_VARIABLE ${NOT_NULL_VARIABLE}"
+          echo "CONDITIONAL_AND_CONCAT ${CONDITIONAL_AND_CONCAT}"
