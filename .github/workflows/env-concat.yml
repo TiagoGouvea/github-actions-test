@@ -27,7 +27,9 @@ jobs:
         if: ${{ env.START_NOW }}
         env:
           START: "Now!"
-          START_TEXT: "${{ env.START_NOW == true && 'Start now!' || 'Start latter' }}"
+          START_TEXT: "${{ env.START_NOW && 'Start now!' || 'Start latter' }}"
+          NULL_VARIABLE: "${{ env.DONT_EXISTS && 'It exists!' || 'Dont exists!' }}"
         run: |
           echo "START ${START}"
           echo "START_TEXT ${START_TEXT}"
+          echo "NULL_VARIABLE ${NULL_VARIABLE}"
