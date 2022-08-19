@@ -7,6 +7,7 @@ env:
 
 jobs:
   envs_default_value:
+    runs-on: ubuntu-latest
     env:
       ENV_VALUE: ${$FOO_ROOT:-$BAR_ROOT}
       ENV_VALUE_NULL: ${$NULL_ROOT:-$BAR_ROOT}
