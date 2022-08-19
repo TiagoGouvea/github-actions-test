@@ -31,11 +31,13 @@ jobs:
         if: env.START_NOW
         env:
           MUST_START: "Now!"
+        run: echo 'A run (or uses) command is required'
 
       - name: Start later?
         if: env.START_NOW
         env:
           MUST_START: "Later!"
+        run: echo 'A run (or uses) command is required'
 
       - name: Check value
         run: |
