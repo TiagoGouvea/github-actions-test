@@ -23,3 +23,20 @@ jobs:
           echo "NULL_VARIABLE ${NULL_VARIABLE}"
           echo "NOT_NULL_VARIABLE ${NOT_NULL_VARIABLE}"
           echo "CONDITIONAL_AND_CONCAT ${CONDITIONAL_AND_CONCAT}"
+
+  conditional_env_set:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start now?
+        if: env.START_NOW
+        env:
+          MUST_START: "Now!"
+
+      - name: Start later?
+        if: env.START_NOW
+        env:
+          MUST_START: "Later!"
+
+      - name: Check value
+        run: |
+          echo "Must start: ${MUST_START}"
