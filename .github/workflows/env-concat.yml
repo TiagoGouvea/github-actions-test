@@ -7,29 +7,17 @@ env:
   START_NOW: true
 
 jobs:
-  envs_default_value:
-    runs-on: ubuntu-latest
-    env:
-      FIXED_VALUE: "My name is James"
-      ENV_VALUE: ${$FOO_ROOT:-$BAR_ROOT}
-      ENV_VALUE_NULL: ${$NULL_ROOT:-$BAR_ROOT}
-    steps:
-      - name: Test envs
-        run: |
-          echo "FIXED_VALUE: ${FIXED_VALUE}"
-          echo "ENV_VALUE: ${ENV_VALUE}"
-          echo "ENV_VALUE_NULL: ${ENV_VALUE_NULL}" 
-
   conditional_env:
     runs-on: ubuntu-latest
     steps:
-      - name: Conditional env
-        if: ${{ env.START_NOW }}
+      - name: Conditional env values
         env:
           START: "Now!"
           START_TEXT: "${{ env.START_NOW && 'Start now!' || 'Start latter' }}"
           NULL_VARIABLE: "${{ env.DONT_EXISTS && 'It exists!' || 'Dont exists!' }}"
+          NOT_NULL_VARIABLE: "${{ env.FOO_ROOT && 'It exists!' || 'Dont exists!' }}"
         run: |
           echo "START ${START}"
           echo "START_TEXT ${START_TEXT}"
           echo "NULL_VARIABLE ${NULL_VARIABLE}"
+          echo "NOT_NULL_VARIABLE ${NOT_NULL_VARIABLE}"
