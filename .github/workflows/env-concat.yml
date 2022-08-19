@@ -1,0 +1,18 @@
+name: Env Fallback value
+on: push
+
+env:
+  FOO_ROOT: foo on root
+  BAR_ROOT: bar on root
+
+jobs:
+  envs_default_value:
+    env:
+      ENV_VALUE: ${$FOO_ROOT:-$BAR_ROOT}
+      ENV_VALUE_NULL: ${$NULL_ROOT:-$BAR_ROOT}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Test envs
+        run: |
+          echo "ENV_VALUE: $ENV_VALUE"
+          echo "ENV_VALUE_NULL: $ENV_VALUE_NULL"
