@@ -12,6 +12,7 @@ jobs:
           echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_ENV
           echo "branch=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           echo "branch2=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+          echo "secret=its_a_secret_value" >> $GITHUB_ENV
 #        env:
 #          SECRET_NAME: ${{ steps.environment.output.secret_name }}
 #          SECRET: ${{ secrets[steps.environment.output.secret_name] }}
@@ -23,6 +24,7 @@ jobs:
       - name: Read enviroment
         shell: bash
         run: |
-          echo "BRANCH: ${branch}"
-          echo "BRANCH2: ${branch2}"
-          echo "SHA: ${sha_short}"
+          echo "BRANCH: ${env.branch}"
+          echo "BRANCH2: ${env.branch2}"
+          echo "SHA: ${env.sha_short}"
+          echo "secret: ${env.secret}"
