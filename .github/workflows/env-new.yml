@@ -28,11 +28,7 @@ jobs:
     steps:
       - name: Read enviroment on another job with "env"
         env:
-          BRANCH: "${{ env.branch }}"
           SECRET: "${{ env.secret }}"
-          SHA_SHORT: "${{ env.sha_short }}"
         shell: bash
         run: |
-          echo "BRANCH: ${{ env.BRANCH }}"
-          echo "SHA_SHORT: ${{ env.SHA_SHORT }}"
-          echo "secret: ${{ env.SECRET }}"
+          echo "secret: ${{ env.SECRET }} will be 'initial_value'"
