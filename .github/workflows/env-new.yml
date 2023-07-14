@@ -10,30 +10,26 @@ jobs:
         shell: bash
         run: |
           echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
-          echo "branch=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
-          echo "branch2=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
+          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
           echo "secret=its_a_secret_value" >> "$GITHUB_ENV"
       - name: Read enviroment
         shell: bash
         run: |
-          echo "${{ env.branch && 'Branch' }}"
-          echo "BRANCH2: ${{ env.branch2 }}"
-          echo "${{ 'BRANCH2: ' && env.branch2 }}"
-          echo "SHA: ${{ env.sha_short }}"
+          echo "BRANCH: ${{ env.branch }}"
+          echo "SHA_SHORT: ${{ env.sha_short }}"
           echo "secret: ${{ env.secret }}"
-#        env:
-#          SECRET_NAME: ${{ steps.environment.output.secret_name }}
-#          SECRET: ${{ secrets[steps.environment.output.secret_name] }}
 
-#  read-vars:
-#    runs-on: ubuntu-latest
-#    needs: set-vars
-#    steps:
-#      - name: Read enviroment
-#        shell: bash
-#        run: |
-#          echo "${{ env.branch && 'Branch' }}"
-#          echo "BRANCH2: ${{ env.branch2 }}"
-#          echo "${{ 'BRANCH2: ' && env.branch2 }}"
-#          echo "SHA: ${{ env.sha_short }}"
-#          echo "secret: ${{ env.secret }}"
+  read-vars-on-another-job:
+    runs-on: ubuntu-latest
+    needs: set-vars
+    steps:
+      - name: Read enviroment on another job with "env"
+        env:
+          BRANCH: ${{ env.branch }}
+          SECRET: ${{ env.secret }}
+          SHA_SHORT: ${{ env.sha_short }}
+        shell: bash
+        run: |
+          echo "BRANCH: ${{ env.BRANCH }}"
+          echo "SHA_SHORT: ${{ env.SHA_SHORT }}"
+          echo "secret: ${{ env.SECRET }}"
