@@ -26,6 +26,6 @@ jobs:
         run: |
           echo "${{ env.branch && 'Branch' }}"
           echo "BRANCH2: ${{ env.branch2 }}"
-          echo "${{ BRANCH2:  && env.branch2 }}"
+          echo "${{ 'BRANCH2: ' && env.branch2 }}"
           echo "SHA: ${{ env.sha_short }}"
           echo "secret: ${{ env.secret }}"
