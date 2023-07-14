@@ -24,7 +24,7 @@ jobs:
       - name: Read enviroment
         shell: bash
         run: |
-          echo "BRANCH: ${env.branch}"
-          echo "BRANCH2: ${env.branch2}"
-          echo "SHA: ${env.sha_short}"
-          echo "secret: ${env.secret}"
+          echo "BRANCH: ${{ env.branch }}"
+          echo "BRANCH2: ${{ env.branch2 }}"
+          echo "SHA: ${{ env.sha_short }}"
+          echo "secret: ${{ env.secret }}"
