@@ -1,6 +1,9 @@
 name: Env setting and getting tests
 on: push
 
+env:
+  secret: "initial_value"
+
 jobs:
   set-vars:
     runs-on: ubuntu-latest
@@ -11,7 +14,7 @@ jobs:
         run: |
           echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
-          echo "secret=its_a_secret_value" >> "$GITHUB_ENV"
+          echo "secret=second_value" >> "$GITHUB_ENV"
       - name: Read enviroment
         shell: bash
         run: |
@@ -26,7 +29,7 @@ jobs:
       - name: Read enviroment on another job with "env"
         env:
           BRANCH: "${{ env.branch }}"
-          SECRET: "env.secret"
+          SECRET: "${{ env.secret }}"
           SHA_SHORT: "${{ env.sha_short }}"
         shell: bash
         run: |
